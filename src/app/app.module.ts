@@ -4,15 +4,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatStepperModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule} from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { WizardComponent } from './wizard/wizard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GenreSelectComponent } from './wizard/genre-select/genre-select.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WizardComponent
+    WizardComponent,
+    GenreSelectComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +24,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatStepperModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
