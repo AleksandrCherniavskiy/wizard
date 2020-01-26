@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
-  selector: 'app-select-button',
+  selector: 'app-genre-select',
   templateUrl: './genre-select.component.html',
   styleUrls: ['./genre-select.component.scss']
 })
