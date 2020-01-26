@@ -1,32 +1,18 @@
-<button mat-raised-button (click)="isOptional = !isOptional">
-  {{!isOptional ? 'Enable optional steps' : 'Disable optional steps'}}
-</button>
-
 <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="form">
+  <mat-step [stepControl]="form.get('genre')">
       <ng-template matStepLabel>Genre</ng-template>
-      <!--<mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>-->
-      <app-genre-select [inputControl]="form.get('genre')"></app-genre-select>
-<!--      <button formControlName="genre" value="Genre 1">Genre 1</button>-->
+      <app-genre-select [inputControl]="form.get('genre')" [genresArray]="genresArray"></app-genre-select>
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
-    </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" [optional]="isOptional">
-    <form [formGroup]="secondFormGroup">
+  <mat-step [stepControl]="form.get('subgenre')">
       <ng-template matStepLabel>Subgenre</ng-template>
-      <mat-form-field>
-        <input matInput placeholder="Address" formControlName="secondCtrl" required>
-      </mat-form-field>
+      <app-genre-select [subgenreControl]="form.get('subgenre')" [subgenresArray]="subgenresArray"></app-genre-select>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button matStepperNext>Next</button>
       </div>
-    </form>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>

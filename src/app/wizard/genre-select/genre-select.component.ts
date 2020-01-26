@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+
+import { GenreBase, Subgenre } from '../../core/models/model';
 
 @Component({
   selector: 'app-genre-select',
@@ -8,7 +10,9 @@ import {FormControl, FormGroup} from '@angular/forms';
 })
 export class GenreSelectComponent implements OnInit {
   @Input() inputControl: FormControl;
-  genres: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+  @Input() genresArray: GenreBase[];
+  @Input() subgenreControl: FormControl;
+  @Input() subgenresArray: Subgenre[];
 
   constructor() { }
 
