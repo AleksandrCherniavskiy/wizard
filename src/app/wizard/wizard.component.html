@@ -4,11 +4,13 @@
 
 <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
   <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
+    <form [formGroup]="form">
       <ng-template matStepLabel>Genre</ng-template>
-      <mat-form-field>
+      <!--<mat-form-field>
         <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
+      </mat-form-field>-->
+      <app-genre-select [inputControl]="form.get('genre')"></app-genre-select>
+<!--      <button formControlName="genre" value="Genre 1">Genre 1</button>-->
       <div>
         <button mat-button matStepperNext>Next</button>
       </div>
@@ -35,3 +37,4 @@
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+<pre>{{form.value | json}}</pre>
