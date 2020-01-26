@@ -1,0 +1,5 @@
+<mat-grid-list cols="4" class="select-button">
+  <button *ngFor="let genre of genres" (click)="inputControl.setValue(genre)" mat-stroked-button>
+    {{'Genre ' + genre}}
+  </button>
+</mat-grid-list>
