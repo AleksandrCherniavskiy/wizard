@@ -10,11 +10,17 @@ export class WizardComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   isOptional = false;
+  form: FormGroup;
 
-
+  // tslint:disable-next-line:variable-name
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.form = this._formBuilder.group({
+      genre: [null, Validators.required],
+      subGenre: [null, Validators.required]
+    });
+    // console.warn(this.form.value);
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
