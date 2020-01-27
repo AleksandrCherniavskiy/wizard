@@ -10,3 +10,9 @@ export interface Subgenre extends GenreBase {
 export interface Genre extends GenreBase {
   subgenres: Subgenre[];
 }
+
+export interface Step {
+  id: number;
+  label: string;
+  isVisible: boolean;
+}
