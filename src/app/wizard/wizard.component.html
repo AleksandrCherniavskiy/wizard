@@ -3,24 +3,25 @@
       <ng-template matStepLabel>Genre</ng-template>
       <app-genre-select [inputControl]="form.get('genre')" [genresArray]="genresArray"></app-genre-select>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext type="button">Next</button>
       </div>
   </mat-step>
   <mat-step [stepControl]="form.get('subgenre')">
       <ng-template matStepLabel>Subgenre</ng-template>
       <app-genre-select [subgenreControl]="form.get('subgenre')" [subgenresArray]="subgenresArray"></app-genre-select>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious type="button">Back</button>
+        <button mat-button matStepperNext type="button">Next</button>
       </div>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Done</ng-template>
     You are now done.
     <div>
-      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button matStepperPrevious type="button">Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
+
 <pre>{{form.value | json}}</pre>
