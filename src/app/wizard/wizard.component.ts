@@ -42,6 +42,7 @@ export class WizardComponent implements OnInit {
         this.stepsArray[2].isVisible = false;
         this.stepsArray[3].isVisible = true;
         this.stepsArray[4].isVisible = true;
+        console.log(this.stepsArray);
       });
     }
 }
