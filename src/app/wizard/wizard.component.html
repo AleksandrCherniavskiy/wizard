@@ -14,15 +14,22 @@
         <button mat-button matStepperNext type="button">Next</button>
       </div>
   </mat-step>
-  <mat-step [stepControl]="form.get('addNewSubgenre')">
-    <ng-template matStepLabel>Subgenre</ng-template>
+  <mat-step *ngIf="stepsArray[2].isVisible">
+    <ng-template matStepLabel>...</ng-template>
+    <div>
+<!--      <button mat-button matStepperPrevious type="button">Back</button>-->
+<!--      <button mat-button matStepperNext type="button">Next</button>-->
+    </div>
+  </mat-step>
+  <mat-step *ngIf="stepsArray[3].isVisible" [stepControl]="form.get('addNewSubgenre')">
+    <ng-template matStepLabel>Add new subgenre</ng-template>
     <div>
       <button mat-button matStepperPrevious type="button">Back</button>
       <button mat-button matStepperNext type="button">Next</button>
     </div>
   </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
+  <mat-step *ngIf="stepsArray[4].isVisible">
+    <ng-template matStepLabel>Information</ng-template>
     You are now done.
     <div>
       <button mat-button matStepperPrevious type="button">Back</button>
