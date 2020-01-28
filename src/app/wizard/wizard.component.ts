@@ -30,7 +30,7 @@ export class WizardComponent implements OnInit {
     this.form = this._formBuilder.group({
       genre: [null, Validators.required],
       subgenre: [null, Validators.required],
-      addNewSubgenre: this._formBuilder.group({
+      newSubgenre: this._formBuilder.group({
         subgenreName: ['', Validators.required],
         descriptionIsRequired: false
       })
