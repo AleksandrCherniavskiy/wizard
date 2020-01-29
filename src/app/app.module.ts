@@ -13,13 +13,15 @@ import { WizardComponent } from './wizard/wizard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GenreSelectComponent } from './wizard/genre-select/genre-select.component';
 import { NewSubgenreComponent } from './wizard/new-subgenre/new-subgenre.component';
+import { InformationComponent } from './wizard/information/information.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WizardComponent,
     GenreSelectComponent,
-    NewSubgenreComponent
+    NewSubgenreComponent,
+    InformationComponent
   ],
   imports: [
     BrowserModule,
