@@ -1,0 +1,5 @@
+<div [formGroup]="informationControl">
+  <mat-form-field>
+    <input matInput placeholder="Book title" [formControl]="informationControl.get('bookTitle')" required>
+  </mat-form-field>
+</div>
