@@ -20,19 +20,31 @@ export class WizardComponent implements OnInit {
   stepsArray: Step[];
 
   // tslint:disable-next-line:variable-name
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.genresArray = GenresArray;
     this.subgenresArray = SubgenresArray;
     this.stepsArray = StepsArray;
 
-    this.form = this._formBuilder.group({
+    this.form = this.formBuilder.group({
       genre: [null, Validators.required],
       subgenre: [null, Validators.required],
-      newSubgenre: this._formBuilder.group({
+      newSubgenre: this.formBuilder.group({
         subgenreName: ['', Validators.required],
         descriptionIsRequired: false
+      }),
+      information: this.formBuilder.group({
+        bookTitle: ['', Validators.required],
+        author: ['', Validators.required],
+        isbn: ['', Validators.required],
+        publisher: ['', Validators.required],
+        datePublished: ['', Validators.required],
+        numberOfPages: ['', Validators.required],
+        format: ['', Validators.required],
+        edition: ['', Validators.required],
+        editionLanguage: ['', Validators.required],
+        description: ['', Validators.required]
       })
     });
 
