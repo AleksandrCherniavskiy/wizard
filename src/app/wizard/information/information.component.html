@@ -1,5 +1,22 @@
-<div [formGroup]="informationControl">
-  <mat-form-field>
-    <input matInput placeholder="Book title" [formControl]="informationControl.get('bookTitle')" required>
-  </mat-form-field>
-</div>
+<mat-form-field class="form-field"  appearance="outline">
+  <mat-label>Book title</mat-label>
+  <input class="form-field__input" matInput placeholder="Book title" [formControl]="informationControl.get('bookTitle')">
+</mat-form-field>
+<mat-form-field class="form-field" appearance="outline">
+  <mat-label>Author</mat-label>
+  <mat-select class="form-field__input" placeholder="Author" [formControl]="informationControl.get('author')">
+    <mat-option *ngFor="let author of authorArray" [value]="author">{{author}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field  appearance="outline">
+  <mat-label>ISBN</mat-label>
+  <input matInput placeholder="ISBN" [formControl]="informationControl.get('isbn')">
+</mat-form-field>
+<mat-form-field  appearance="outline">
+  <mat-label>Book title</mat-label>
+  <input matInput placeholder="Book title" [formControl]="informationControl.get('bookTitle')">
+</mat-form-field>
+<mat-form-field  appearance="outline">
+  <mat-label>Book title</mat-label>
+  <input matInput placeholder="Book title" [formControl]="informationControl.get('bookTitle')">
+</mat-form-field>
