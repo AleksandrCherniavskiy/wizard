@@ -8,6 +8,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class InformationComponent implements OnInit {
   @Input() informationControl: FormGroup;
+  authorArray = ['Author 1', 'Author 2', 'Author 3'];
 
   constructor() { }
 
