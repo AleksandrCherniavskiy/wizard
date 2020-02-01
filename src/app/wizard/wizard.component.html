@@ -3,7 +3,7 @@
       <ng-template matStepLabel>Genre</ng-template>
       <app-genre-select [inputControl]="form.get('genre')" [genresArray]="genresArray"></app-genre-select>
       <div>
-        <button mat-button matStepperNext type="button">Next</button>
+        <button mat-button matStepperNext type="button" [disabled]="!form.get('genre').valid">Next</button>
       </div>
   </mat-step>
   <mat-step [stepControl]="form.get('subgenre')">
@@ -14,14 +14,11 @@
         <button mat-button matStepperNext type="button">Next</button>
       </div>
   </mat-step>
-  <mat-step *ngIf="stepsArray[2].isVisible">
+  <mat-step *ngIf="stepsArray[2].isVisible && !form.get('subgenre').value" >
     <ng-template matStepperIcon="error"></ng-template>
-    <div>
-<!--      <button mat-button matStepperPrevious type="button">Back</button>-->
-<!--      <button mat-button matStepperNext type="button">Next</button>-->
-    </div>
   </mat-step>
-  <mat-step *ngIf="stepsArray[3].isVisible" [stepControl]="form.get('newSubgenre')" [optional]="!stepsArray[3].isVisible">
+  <mat-step *ngIf="stepsArray[3].isVisible" [stepControl]="form.get('newSubgenre')"
+            [optional]="!stepsArray[3].isVisible">
     <ng-template matStepLabel>Add new subgenre</ng-template>
     <div>
       <app-new-subgenre [newSubgenreControl]="form.get('newSubgenre')"></app-new-subgenre>
@@ -29,9 +26,12 @@
       <button mat-button matStepperNext type="button">Next</button>
     </div>
   </mat-step>
-  <mat-step *ngIf="stepsArray[4].isVisible">
+  <mat-step *ngIf="stepsArray[4].isVisible || form.get('subgenre').value">
     <ng-template matStepLabel>Information</ng-template>
-    <app-information [informationControl]="form.get('information')"></app-information>
+    <app-information
+      [informationControl]="form.get('information')"
+      [descriptionIsRequiredControl]="form.get('newSubgenre.descriptionIsRequired')">
+    </app-information>
     <div>
       <button mat-button matStepperPrevious type="button">Back</button>
       <button mat-button (click)="stepper.reset()">Reset</button>
