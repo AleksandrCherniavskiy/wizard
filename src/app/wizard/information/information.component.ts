@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
-import { StepsArray } from '../../core/models/steps-array';
-
 @Component({
   selector: 'app-information',
   templateUrl: './information.component.html',
