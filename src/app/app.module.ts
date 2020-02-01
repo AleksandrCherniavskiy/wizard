@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatStepperModule,
@@ -9,7 +9,8 @@ import {
   MatIconModule,
   MatButtonModule,
   MatGridListModule,
-  MatSelectModule
+  MatSelectModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -37,7 +38,9 @@ import { InformationComponent } from './wizard/information/information.component
     MatGridListModule,
     MatFormFieldModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
