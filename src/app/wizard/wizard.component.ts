@@ -19,7 +19,6 @@ export class WizardComponent implements OnInit {
   subgenresArray: Subgenre[];
   stepsArray: Step[];
 
-  // tslint:disable-next-line:variable-name
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -54,7 +53,6 @@ export class WizardComponent implements OnInit {
         this.stepsArray[2].isVisible = false;
         this.stepsArray[3].isVisible = true;
         this.stepsArray[4].isVisible = true;
-        console.log(this.stepsArray);
       });
     }
 }
