@@ -17,7 +17,6 @@ export class GenreSelectComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.inputControl);
   }
 
 }
