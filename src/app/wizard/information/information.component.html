@@ -8,15 +8,49 @@
     <mat-option *ngFor="let author of authorArray" [value]="author">{{author}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field  appearance="outline">
+<mat-form-field class="form-field" appearance="outline">
   <mat-label>ISBN</mat-label>
-  <input matInput placeholder="ISBN" [formControl]="informationControl.get('isbn')">
+  <input class="form-field__inptut" matInput placeholder="ISBN" [formControl]="informationControl.get('isbn')">
 </mat-form-field>
-<mat-form-field  appearance="outline">
-  <mat-label>Book title</mat-label>
-  <input matInput placeholder="Book title" [formControl]="informationControl.get('bookTitle')">
+<mat-form-field class="form-field" appearance="outline">
+  <mat-label>Publisher</mat-label>
+  <mat-select class="form-field__input" placeholder="Publisher" [formControl]="informationControl.get('publisher')">
+    <mat-option *ngFor="let publisher of publisherArray" [value]="publisher">{{publisher}}</mat-option>
+  </mat-select>
 </mat-form-field>
-<mat-form-field  appearance="outline">
-  <mat-label>Book title</mat-label>
-  <input matInput placeholder="Book title" [formControl]="informationControl.get('bookTitle')">
+<mat-form-field  class="form-field_small" appearance="outline">
+  <mat-label>Date published</mat-label>
+  <input matInput type="date" placeholder="DD/MM/YYYY" [formControl]="informationControl.get('datePublished')">
 </mat-form-field>
+<mat-form-field class="form-field_small"  appearance="outline">
+  <mat-label>Number of pages</mat-label>
+  <input matInput type="number" placeholder="Number of pages" [formControl]="informationControl.get('numberOfPages')">
+</mat-form-field>
+<mat-form-field class="form-field_small" appearance="outline">
+    <mat-label>Format</mat-label>
+    <mat-select placeholder="Format" [formControl]="informationControl.get('format')">
+      <mat-option *ngFor="let format of formatArray" [value]="format">{{format}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+<mat-form-field appearance="outline">
+  <mat-label>Edition</mat-label>
+  <input matInput placeholder="Edition" [formControl]="informationControl.get('edition')">
+</mat-form-field>
+<mat-form-field class="form-field_parallel" appearance="outline">
+  <mat-label>Edition language</mat-label>
+  <mat-select placeholder="Edition language" [formControl]="informationControl.get('editionLanguage')">
+    <mat-option *ngFor="let editionLanguage of editionLanguageArray" [value]="editionLanguage">
+      {{editionLanguage}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field  *ngIf="descriptionIsRequiredControl.value" class="form-field" appearance="outline">
+  <mat-label>Description</mat-label>
+  <textarea matInput type="text" placeholder="Type the description..."
+            [formControl]="informationControl.get('description')">
+  </textarea>
+</mat-form-field>
+
+
+
+
