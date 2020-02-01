@@ -1,9 +1,13 @@
-<mat-grid-list cols="4" class="select-button">
-    <button *ngFor="let genre of genresArray" (click)="inputControl.setValue(genre)" mat-stroked-button>
+<mat-grid-list cols="4" rowHeight="50px" class="buttons-field" gutterSize="20px">
+  <mat-grid-tile *ngFor="let genre of genresArray">
+    <button class="buttons-field_button"
+            (click)="inputControl.setValue(genre)" mat-stroked-button>
       {{genre.name}}
     </button>
-
-    <button *ngFor="let subgenre of subgenresArray" (click)="subgenreControl.setValue(subgenre)" mat-stroked-button>
+  </mat-grid-tile>
+  <mat-grid-tile *ngFor="let subgenre of subgenresArray">
+    <button class="buttons-field_button" (click)="subgenreControl.setValue(subgenre)" mat-stroked-button>
       {{subgenre.name}}
     </button>
+  </mat-grid-tile>
 </mat-grid-list>
