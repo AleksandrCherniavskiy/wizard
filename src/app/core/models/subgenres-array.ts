@@ -28,7 +28,7 @@ export const SubgenresArray  = [
     name: 'Subgenre 7',
     isDescriptionRequired: false
   }, {
-    id: null,
+    id: 0,
     name: 'Add new',
     isDescriptionRequired: false
   }

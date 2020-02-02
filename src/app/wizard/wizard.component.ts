@@ -7,7 +7,6 @@ import { GenresArray } from '../core/models/genres-array';
 import { SubgenresArray } from '../core/models/subgenres-array';
 import { StepsArray } from '../core/models/steps-array';
 
-
 @Component({
   selector: 'app-wizard',
   templateUrl: './wizard.component.html',
@@ -43,16 +42,20 @@ export class WizardComponent implements OnInit {
         format: ['', Validators.required],
         edition: ['', Validators.required],
         editionLanguage: ['', Validators.required],
-        description: ['', Validators.required]
+        description: ''
       })
     });
 
     this.form.get('subgenre').valueChanges
-      .pipe(filter(({id}: Subgenre) => id === null))
+      .pipe(filter(({id}: Subgenre) => id === 0))
       .subscribe(() => {
         this.stepsArray[2].isVisible = false;
         this.stepsArray[3].isVisible = true;
         this.stepsArray[4].isVisible = true;
-      });
-    }
+    });
+  }
+
+  submitConsole() {
+    console.log('Form: ', this.form.value);
+  }
 }
