@@ -51,11 +51,13 @@
               matStepperPrevious type="button">Back
       </button>
       <button mat-raised-button color="primary" class="stepper-btn-group_btn"
-              (click)="stepper.reset()"
-              [disabled]="!form.get('information').valid">Reset
+              type="submit" (click)="submitConsole()"
+              [disabled]="!form.get('information').valid">Submit
       </button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>
 
 <pre>{{form.value | json}}</pre>
+
+<!--(click)="stepper.reset"-->
