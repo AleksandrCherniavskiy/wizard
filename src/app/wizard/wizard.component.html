@@ -21,12 +21,12 @@
                 matStepperPrevious type="button">Back
         </button>
         <button mat-raised-button color="primary" class="stepper-btn-group_btn"
-                matStepperNext type="button"
+                matStepperNext type="button" (click)="stepsArray[2].isVisible = false"
                 [disabled]="!form.get('subgenres').valid">Next
         </button>
       </div>
     </mat-step>
-    <mat-step *ngIf="stepsArray[2].isVisible && !form.get('subgenres').value" >
+    <mat-step *ngIf="stepsArray[2].isVisible">
       <ng-template matStepperIcon="error"></ng-template>
     </mat-step>
     <mat-step *ngIf="stepsArray[3].isVisible" [stepControl]="form.get('newSubgenre')"
@@ -43,7 +43,7 @@
         </button>
       </div>
     </mat-step>
-    <mat-step *ngIf="stepsArray[4].isVisible || form.get('subgenres').value">
+    <mat-step *ngIf="!stepsArray[2].isVisible || stepsArray[4].isVisible">
       <ng-template matStepLabel>Information</ng-template>
       <app-information
         [informationControl]="form.get('information')"

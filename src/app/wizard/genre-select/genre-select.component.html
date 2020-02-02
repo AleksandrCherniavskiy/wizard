@@ -1,7 +1,7 @@
 <mat-grid-list cols="4" rowHeight="50px" class="buttons-field" gutterSize="20px">
   <mat-grid-tile *ngFor="let item of items">
     <button class="buttons-field__button"
-            (click)="selectItem(item)"
+            (click)="selectItem(item); "
             [class.buttons-field__button_selected]="isItemSelected(item)"
             mat-stroked-button>
       {{item.name}}
