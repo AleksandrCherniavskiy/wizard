@@ -18,6 +18,7 @@ import { WizardComponent } from './wizard/wizard.component';
 import { GenreSelectComponent } from './wizard/genre-select/genre-select.component';
 import { NewSubgenreComponent } from './wizard/new-subgenre/new-subgenre.component';
 import { InformationComponent } from './wizard/information/information.component';
+import { LastScreenComponent } from './wizard/last-screen/last-screen.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { InformationComponent } from './wizard/information/information.component
     WizardComponent,
     GenreSelectComponent,
     NewSubgenreComponent,
-    InformationComponent
+    InformationComponent,
+    LastScreenComponent
   ],
   imports: [
     BrowserModule,

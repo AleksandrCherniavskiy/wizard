@@ -12,5 +12,4 @@ export class NewSubgenreComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

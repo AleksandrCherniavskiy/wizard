@@ -1,26 +1,38 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
-import { GenreBase, Subgenre } from '../../core/models/model';
+import { GenreBase } from '../../core/models/model';
 
 @Component({
   selector: 'app-genre-select',
   templateUrl: './genre-select.component.html',
   styleUrls: ['./genre-select.component.scss']
 })
-export class GenreSelectComponent implements OnInit {
+export class GenreSelectComponent {
   @Input() inputControl: FormControl;
-  @Input() genresArray: GenreBase[];
-  @Input() subgenreControl: FormControl;
-  @Input() subgenresArray: Subgenre[];
+  @Input() items: GenreBase[];
+  @Input() isMultiple = false;
 
-  constructor() { }
+  selectItem(item) {
+    if (this.isMultiple) {
+      const value = this.inputControl.value as unknown[];
+      const index = value.indexOf(item);
 
-  ngOnInit() {
+      if (index > -1) {
+        value.splice(index, 1);
+      } else {
+        value.push(item);
+      }
+
+      this.inputControl.setValue(value);
+    } else {
+      this.inputControl.setValue(item);
+    }
   }
 
   isItemSelected(item): boolean {
-    return this.formControl.value === item;
+    if (this.inputControl.value) {
+      return this.isMultiple ? this.inputControl.value.includes(item) : this.inputControl.value === item;
+    }
   }
-
 }

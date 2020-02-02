@@ -6,6 +6,7 @@ import { Genre, Subgenre, Step } from '../core/models/model';
 import { GenresArray } from '../core/models/genres-array';
 import { SubgenresArray } from '../core/models/subgenres-array';
 import { StepsArray } from '../core/models/steps-array';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-wizard',
@@ -17,6 +18,9 @@ export class WizardComponent implements OnInit {
   genresArray: Genre[];
   subgenresArray: Subgenre[];
   stepsArray: Step[];
+  isMultiply: boolean;
+  bookAdded = false;
+  subscription: Subscription;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -27,7 +31,8 @@ export class WizardComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       genre: [null, Validators.required],
-      subgenre: [null, Validators.required],
+      // subgenre: [null, Validators.required],
+      subgenres: [ [], Validators.required],
       newSubgenre: this.formBuilder.group({
         subgenreName: ['', Validators.required],
         descriptionIsRequired: false
@@ -45,17 +50,52 @@ export class WizardComponent implements OnInit {
         description: ''
       })
     });
+  }
 
-    this.form.get('subgenre').valueChanges
-      .pipe(filter(({id}: Subgenre) => id === 0))
-      .subscribe(() => {
-        this.stepsArray[2].isVisible = false;
-        this.stepsArray[3].isVisible = true;
-        this.stepsArray[4].isVisible = true;
+  subgenreInit() {
+    this.form.get('subgenres').setValue([]);
+    this.subscription = this.form.get('subgenres').valueChanges
+    .pipe(filter((subgenres) => subgenres.some(({id}) => id === 0)))
+    .subscribe(() => {
+      this.stepsArray[2].isVisible = false;
+      this.stepsArray[3].isVisible = true;
+      this.stepsArray[4].isVisible = true;
     });
   }
 
   submitConsole() {
+    // this.bookAdded = true;
+    this.subscription.unsubscribe();
     console.log('Form: ', this.form.value);
+
+
+    const value = this.form.value;
+    value.genre.subgenres = value.subgenres;
+    delete value.subgenres;
+
+
+
+
+    this.stepsArray[2].isVisible = true;
+    this.stepsArray[3].isVisible = false;
+    this.stepsArray[4].isVisible = false;
+    this.form.reset();
+    /*const url = 'https://example.com/profile';
+    const data = { username: 'example' };
+
+    try {
+      const asynk response = await fetch(url, {
+        method: 'POST', // или 'PUT'
+        body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const json = await response.json();
+      console.log('Успех:', JSON.stringify(json));
+    } catch (error) {
+      console.error('Ошибка:', error);
+    }*/
+
   }
 }

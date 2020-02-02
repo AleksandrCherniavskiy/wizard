@@ -1,63 +1,68 @@
-<mat-horizontal-stepper labelPosition="bottom" linear #stepper>
-  <mat-step [stepControl]="form.get('genre')">
+<div *ngIf="!bookAdded">
+  <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
+    <mat-step [stepControl]="form.get('genre')">
       <ng-template matStepLabel>Genre</ng-template>
-      <app-genre-select [inputControl]="form.get('genre')" [genresArray]="genresArray"></app-genre-select>
+      <app-genre-select [inputControl]="form.get('genre')" [items]="genresArray"></app-genre-select>
       <div class="stepper-btn-group">
         <button  mat-raised-button color="primary" class="stepper-btn-group_btn"
-                 matStepperNext type="button"
+                 matStepperNext type="button" (click)="subgenreInit()"
                  [disabled]="!form.get('genre').valid">
           Next
         </button>
       </div>
-  </mat-step>
-  <mat-step [stepControl]="form.get('subgenre')">
+    </mat-step>
+    <mat-step [stepControl]="form.get('subgenres')">
       <ng-template matStepLabel>Subgenre</ng-template>
-      <app-genre-select [subgenreControl]="form.get('subgenre')" [subgenresArray]="subgenresArray"></app-genre-select>
+      <app-genre-select [inputControl]="form.get('subgenres')"
+                        [items]="subgenresArray" [isMultiple]="true">
+      </app-genre-select>
       <div class="stepper-btn-group">
         <button mat-raised-button color="primary" class="stepper-btn-group_btn"
                 matStepperPrevious type="button">Back
         </button>
         <button mat-raised-button color="primary" class="stepper-btn-group_btn"
                 matStepperNext type="button"
-                [disabled]="!form.get('subgenre').valid">Next
+                [disabled]="!form.get('subgenres').valid">Next
         </button>
       </div>
-  </mat-step>
-  <mat-step *ngIf="stepsArray[2].isVisible && !form.get('subgenre').value" >
-    <ng-template matStepperIcon="error"></ng-template>
-  </mat-step>
-  <mat-step *ngIf="stepsArray[3].isVisible" [stepControl]="form.get('newSubgenre')"
-            [optional]="!stepsArray[3].isVisible">
-    <ng-template matStepLabel>Add new subgenre</ng-template>
+    </mat-step>
+    <mat-step *ngIf="stepsArray[2].isVisible && !form.get('subgenres').value" >
+      <ng-template matStepperIcon="error"></ng-template>
+    </mat-step>
+    <mat-step *ngIf="stepsArray[3].isVisible" [stepControl]="form.get('newSubgenre')"
+              [optional]="!stepsArray[3].isVisible">
+      <ng-template matStepLabel>Add new subgenre</ng-template>
       <app-new-subgenre [newSubgenreControl]="form.get('newSubgenre')"></app-new-subgenre>
-    <div class="stepper-btn-group">
-      <button mat-raised-button color="primary" class="stepper-btn-group_btn"
-              matStepperPrevious type="button">Back
-      </button>
-      <button mat-raised-button color="primary" class="stepper-btn-group_btn"
-              matStepperNext type="button"
-              [disabled]="!form.get('newSubgenre').valid">Next
-      </button>
-    </div>
-  </mat-step>
-  <mat-step *ngIf="stepsArray[4].isVisible || form.get('subgenre').value">
-    <ng-template matStepLabel>Information</ng-template>
-    <app-information
-      [informationControl]="form.get('information')"
-      [descriptionIsRequiredControl]="form.get('newSubgenre.descriptionIsRequired')">
-    </app-information>
-    <div class="stepper-btn-group">
-      <button mat-raised-button color="primary" class="stepper-btn-group_btn"
-              matStepperPrevious type="button">Back
-      </button>
-      <button mat-raised-button color="primary" class="stepper-btn-group_btn"
-              type="submit" (click)="submitConsole()"
-              [disabled]="!form.get('information').valid">Submit
-      </button>
-    </div>
-  </mat-step>
-</mat-horizontal-stepper>
+      <div class="stepper-btn-group">
+        <button mat-raised-button color="primary" class="stepper-btn-group_btn"
+                matStepperPrevious type="button">Back
+        </button>
+        <button mat-raised-button color="primary" class="stepper-btn-group_btn"
+                matStepperNext type="button"
+                [disabled]="!form.get('newSubgenre').valid">Next
+        </button>
+      </div>
+    </mat-step>
+    <mat-step *ngIf="stepsArray[4].isVisible || form.get('subgenres').value">
+      <ng-template matStepLabel>Information</ng-template>
+      <app-information
+        [informationControl]="form.get('information')"
+        [descriptionIsRequiredControl]="form.get('newSubgenre.descriptionIsRequired')">
+      </app-information>
+      <div class="stepper-btn-group">
+        <button mat-raised-button color="primary" class="stepper-btn-group_btn"
+                matStepperPrevious type="button">Back
+        </button>
+        <button mat-raised-button color="primary" class="stepper-btn-group_btn"
+                 (click)="submitConsole(); stepper.reset()"
+                [disabled]="!form.get('information').valid">Add
+        </button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
 
-<pre>{{form.value | json}}</pre>
+  <pre>{{form.value | json}}</pre>
 
-<!--(click)="stepper.reset"-->
+  <!--(click)="stepper.reset"-->
+</div>
+<app-last-screen [bookAdded]="bookAdded"></app-last-screen>
