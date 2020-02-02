@@ -19,4 +19,8 @@ export class GenreSelectComponent implements OnInit {
   ngOnInit() {
   }
 
+  isItemSelected(item): boolean {
+    return this.formControl.value === item;
+  }
+
 }
