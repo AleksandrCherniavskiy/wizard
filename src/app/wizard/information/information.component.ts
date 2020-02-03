@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
@@ -6,7 +6,7 @@ import {FormControl, FormGroup} from '@angular/forms';
   templateUrl: './information.component.html',
   styleUrls: ['./information.component.scss']
 })
-export class InformationComponent implements OnInit {
+export class InformationComponent {
   @Input() informationControl: FormGroup;
   @Input() descriptionIsRequiredControl: FormControl;
 
@@ -14,10 +14,4 @@ export class InformationComponent implements OnInit {
   publisherArray = ['Publisher 1', 'Publisher 2', 'Publisher 3'];
   formatArray = ['Format 1', 'Format 2', 'Format 3'];
   editionLanguageArray = ['Edition language 1', 'Edition language 2', 'Edition language 3'];
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
 }

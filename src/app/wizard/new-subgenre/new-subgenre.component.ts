@@ -6,10 +6,6 @@ import {FormGroup} from '@angular/forms';
   templateUrl: './new-subgenre.component.html',
   styleUrls: ['./new-subgenre.component.scss']
 })
-export class NewSubgenreComponent implements OnInit {
+export class NewSubgenreComponent {
   @Input() newSubgenreControl: FormGroup;
-  constructor() { }
-
-  ngOnInit() {
-  }
 }

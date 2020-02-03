@@ -21,9 +21,6 @@ export class WizardComponent implements OnInit {
   isMultiply: boolean;
   addAnotherBook = false;
   subscription: Subscription;
-  fetchRequest;
-  requestResult;
-  requestResponse;
 
   constructor(private formBuilder: FormBuilder) {}
 
