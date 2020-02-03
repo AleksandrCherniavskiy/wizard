@@ -47,4 +47,4 @@ import { LastScreenComponent } from './wizard/last-screen/last-screen.component'
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
