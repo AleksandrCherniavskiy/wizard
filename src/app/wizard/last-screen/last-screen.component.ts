@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-last-screen',
@@ -7,6 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LastScreenComponent implements OnInit {
   @Input() bookAdded: boolean;
+  @Output() addAnotherBook = new EventEmitter();
   constructor() { }
 
   ngOnInit() {

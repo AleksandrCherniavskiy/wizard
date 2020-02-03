@@ -1,4 +1,8 @@
-Book added successfully
-<button mat-raised-button color="primary" class="stepper-btn-group_btn" (click)="bookAdded = true">
-  Add another book
-</button>
+<div class="last-screen">
+  <p class="last-screen__text">
+    Book added successfully
+  </p>
+  <button  mat-raised-button class="last-screen__button" color="primary" (click)="addAnotherBook.emit()">
+    Add another book
+  </button>
+</div>

@@ -19,8 +19,11 @@ export class WizardComponent implements OnInit {
   subgenresArray: Subgenre[];
   stepsArray: Step[];
   isMultiply: boolean;
-  bookAdded = false;
+  addAnotherBook = false;
   subscription: Subscription;
+  fetchRequest;
+  requestResult;
+  requestResponse;
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -31,7 +34,6 @@ export class WizardComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       genre: [null, Validators.required],
-      // subgenre: [null, Validators.required],
       subgenres: [ [], Validators.required],
       newSubgenre: this.formBuilder.group({
         subgenreName: ['', Validators.required],
@@ -64,38 +66,33 @@ export class WizardComponent implements OnInit {
   }
 
   submitConsole() {
-    // this.bookAdded = true;
+    this.addAnotherBook = true;
     this.subscription.unsubscribe();
-    console.log('Form: ', this.form.value);
-
+    this.stepsArray[2].isVisible = true;
+    this.stepsArray[3].isVisible = false;
+    this.stepsArray[4].isVisible = false;
 
     const value = this.form.value;
     value.genre.subgenres = value.subgenres;
     delete value.subgenres;
 
-
-
-
-    this.stepsArray[2].isVisible = true;
-    this.stepsArray[3].isVisible = false;
-    this.stepsArray[4].isVisible = false;
+    console.log('Form: ', this.form.value);
+    console.log('this.fetchRequest = (async () => {\n' +
+      '        this.requestResponse = await fetch(\'url\', {\n' +
+      '          method: \'POST\',\n' +
+      '          headers: {\n' +
+      '            \'Content-Type\': \'application/json;charset=utf-8\'\n' +
+      '          },\n' +
+      '          body: JSON.stringify(this.form.value)\n' +
+      '        });\n' +
+      '\n' +
+      '        this.requestResult = await this.requestResponse.json();\n' +
+      '        alert(this.fetchRequest.message);\n' +
+      '      })();');
     this.form.reset();
-    /*const url = 'https://example.com/profile';
-    const data = { username: 'example' };
+  }
 
-    try {
-      const asynk response = await fetch(url, {
-        method: 'POST', // или 'PUT'
-        body: JSON.stringify(data), // данные могут быть 'строкой' или {объектом}!
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      const json = await response.json();
-      console.log('Успех:', JSON.stringify(json));
-    } catch (error) {
-      console.error('Ошибка:', error);
-    }*/
-
+  onAddAnotherBook() {
+    this.addAnotherBook = false;
   }
 }

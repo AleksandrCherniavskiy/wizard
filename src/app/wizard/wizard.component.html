@@ -1,4 +1,4 @@
-<div *ngIf="!bookAdded">
+<div *ngIf="!addAnotherBook">
   <mat-horizontal-stepper labelPosition="bottom" linear #stepper>
     <mat-step [stepControl]="form.get('genre')">
       <ng-template matStepLabel>Genre</ng-template>
@@ -61,8 +61,7 @@
     </mat-step>
   </mat-horizontal-stepper>
 
-  <pre>{{form.value | json}}</pre>
 
-  <!--(click)="stepper.reset"-->
+
 </div>
-<app-last-screen [bookAdded]="bookAdded"></app-last-screen>
+<app-last-screen *ngIf="addAnotherBook" (addAnotherBook)="onAddAnotherBook()"></app-last-screen>
